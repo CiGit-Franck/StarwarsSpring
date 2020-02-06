@@ -1,6 +1,5 @@
 package fty.briefs.starwars.spring.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -47,6 +46,9 @@ public class Planet {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "planet_climates", joinColumns = @JoinColumn(name = "planet_idx"), inverseJoinColumns = @JoinColumn(name = "climate_idx"))
     private Set<Climate> planetClimates = new HashSet<>();
+
+    public Planet() {
+    }
 
     public Long getId() {
         return id;
