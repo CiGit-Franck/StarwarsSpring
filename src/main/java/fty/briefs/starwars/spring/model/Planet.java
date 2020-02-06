@@ -47,7 +47,7 @@ public class Planet {
     @JoinTable(name = "planet_climates", joinColumns = @JoinColumn(name = "planet_idx"), inverseJoinColumns = @JoinColumn(name = "climate_idx"))
     private Set<Climate> planetClimates = new HashSet<>();
 
-    public Planet() {
+    public Planet() {  
     }
 
     public Long getId() {
