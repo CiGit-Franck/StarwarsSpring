@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +23,7 @@ import javax.persistence.Table;
 public class Planet {
 
     @Id
+    @SequenceGenerator(allocationSize = 1, name = "planet_id_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "planet_name")
@@ -47,7 +49,16 @@ public class Planet {
     @JoinTable(name = "planet_climates", joinColumns = @JoinColumn(name = "planet_idx"), inverseJoinColumns = @JoinColumn(name = "climate_idx"))
     private Set<Climate> planetClimates = new HashSet<>();
 
-    public Planet() {  
+    public Planet() {
+    }
+
+    public Planet(String planetName) {
+        this.planetName = planetName;
+    }
+
+    public Planet(Long id, String planetName) {
+        this.id = id;
+        this.planetName = planetName;
     }
 
     public Long getId() {

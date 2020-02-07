@@ -84,8 +84,8 @@ public class PlanetIntegrationTests {
     public void createNewPlanet() {
         // Given a new valid Planet
         String planetName = "Terre";
-        Planet newPlanet = new Planet();
-        newPlanet.setPlanetName(planetName);
+        Planet newPlanet = new Planet(planetName);
+//        newPlanet.setPlanetName(planetName);
 
         HttpEntity<Planet> planetHttpEntity = new HttpEntity<>(newPlanet, null);
 
@@ -108,9 +108,9 @@ public class PlanetIntegrationTests {
     public void updateExistingPlanet() {
         // Given an existing valid Planet (with name modified)
         String newName = "Alderaaaaaaaaaan";
-        Planet existingPlanet = new Planet();
-        existingPlanet.setId(1L);
-        existingPlanet.setPlanetName(newName);
+        Planet existingPlanet = new Planet(1L, newName);
+//        existingPlanet.setId(1L);
+//        existingPlanet.setPlanetName(newName);
 
         HttpEntity<Planet> planetHttpEntity = new HttpEntity<>(existingPlanet, null);
 
